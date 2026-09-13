@@ -1,0 +1,47 @@
+api:
+  base_url: https://gateway.api.globalfishingwatch.org
+  presence_dataset: public-global-presence:latest
+  spatial_resolution: HIGH
+  temporal_resolution: HOURLY
+  group_by: VESSEL_ID
+  # AIS Vessel Presence stores speed as a bucket label, not a number. Observed
+  # buckets (Sept 2026): '<2', '2-4', '4-6', '6-10', '10-…'. A numeric comparison
+  # such as "speed < 2" is rejected by the backend, so filter on the label.
+  presence_filter: "speed = '<2'"
+  chunk_days: 31
+  timeout_seconds: 110
+  last_report_poll_seconds: 5
+  last_report_max_polls: 36
+  events_limit: 500
+
+stops:
+  min_duration_hours: 4.0
+  max_gap_hours: 2.25
+  max_step_km: 5.0
+  max_radius_km: 5.0
+
+clustering:
+  min_cluster_size: 3
+  min_samples: 2
+  # HDBSCAN works on locally projected km coordinates. This mainly controls
+  # post-processing/merging of tiny nearby clusters.
+  merge_radius_km: 8.0
+
+matching:
+  event_space_km: 20.0
+  event_time_hours: 24.0
+  # Port visits from the same analysis window are used as an empirical
+  # anchorage/port catalogue, avoiding a second external basemap dependency.
+  port_dedup_radius_km: 3.0
+
+ranking:
+  # Distances above this are capped for scoring so remote-ocean stops do not dominate.
+  port_distance_cap_km: 100.0
+  min_host_hours: 8.0
+  # Stops at least this far from an inferred port count as "offshore" in the
+  # per-vessel cumulative loitering-hours table.
+  offshore_km: 20.0
+
+map:
+  top_n_stops: 500
+  top_n_hosts: 100

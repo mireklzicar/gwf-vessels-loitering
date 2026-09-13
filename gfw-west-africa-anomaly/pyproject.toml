@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gfw-west-africa-anomaly"
+version = "0.2.0"
+description = "Bulk Global Fishing Watch vessel-presence analysis for offshore stop and suspicious hub discovery in West Africa"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31",
+  "pandas>=2.1",
+  "numpy>=1.26",
+  "pyarrow>=15",
+  "duckdb>=1.0",
+  "scikit-learn>=1.4",
+  "hdbscan>=0.8.40",
+  "folium>=0.16",
+  "shapely>=2.0",
+  "pyyaml>=6.0",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+gfw-anomaly = "gfw_anomaly.cli:app"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100

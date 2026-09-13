@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "name": "west_africa_core",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Senegal-Gambia-GuineaBissau"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-21.0, 10.0], [-11.0, 10.0], [-11.0, 17.5], [-21.0, 17.5], [-21.0, 10.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Guinea-SierraLeone-Liberia"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-18.5, 3.5], [-7.0, 3.5], [-7.0, 11.5], [-18.5, 11.5], [-18.5, 3.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "CoteDIvoire-Ghana-Togo-Benin"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-8.5, 2.0], [4.0, 2.0], [4.0, 8.0], [-8.5, 8.0], [-8.5, 2.0]]]
+      }
+    }
+  ]
+}

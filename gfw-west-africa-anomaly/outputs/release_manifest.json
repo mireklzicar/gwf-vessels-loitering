@@ -1,0 +1,147 @@
+{
+  "release": "v0.2.0",
+  "window_start": "2019-01-01",
+  "window_end_exclusive": "2026-09-01",
+  "completed_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "partial_year": 2026,
+  "config": {
+    "api": {
+      "base_url": "https://gateway.api.globalfishingwatch.org",
+      "presence_dataset": "public-global-presence:latest",
+      "spatial_resolution": "HIGH",
+      "temporal_resolution": "HOURLY",
+      "group_by": "VESSEL_ID",
+      "presence_filter": "speed = '<2'",
+      "chunk_days": 31,
+      "timeout_seconds": 110,
+      "last_report_poll_seconds": 5,
+      "last_report_max_polls": 36,
+      "events_limit": 5000
+    },
+    "stops": {
+      "min_duration_hours": 4.0,
+      "max_gap_hours": 2.25,
+      "max_step_km": 5.0,
+      "max_radius_km": 5.0
+    },
+    "clustering": {
+      "min_cluster_size": 3,
+      "min_samples": 2,
+      "merge_radius_km": 8.0
+    },
+    "matching": {
+      "event_space_km": 20.0,
+      "event_time_hours": 24.0,
+      "port_dedup_radius_km": 3.0
+    },
+    "ranking": {
+      "port_distance_cap_km": 100.0,
+      "min_host_hours": 8.0,
+      "offshore_km": 20.0
+    },
+    "map": {
+      "top_n_stops": 500,
+      "top_n_hosts": 100
+    }
+  },
+  "event_datasets": {
+    "loitering": "public-global-loitering-events:latest",
+    "encounters": "public-global-encounters-events:latest",
+    "gaps": "public-global-gaps-events:latest",
+    "port_visits": "public-global-port-visits-events:latest"
+  },
+  "boundaries": "config/presets/west_africa_maritime.geojson",
+  "boundary_sha256": "a356397268598b74e88588a5658c9bfc3c94a957b6a3b2ae45f736685232c779",
+  "query_geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.0,
+          8.0
+        ],
+        [
+          4.0,
+          2.0
+        ],
+        [
+          -8.5,
+          2.0
+        ],
+        [
+          -8.5,
+          3.5
+        ],
+        [
+          -18.5,
+          3.5
+        ],
+        [
+          -18.5,
+          10.0
+        ],
+        [
+          -21.0,
+          10.0
+        ],
+        [
+          -21.0,
+          17.5
+        ],
+        [
+          -11.0,
+          17.5
+        ],
+        [
+          -11.0,
+          11.5
+        ],
+        [
+          -7.0,
+          11.5
+        ],
+        [
+          -7.0,
+          8.0
+        ],
+        [
+          4.0,
+          8.0
+        ]
+      ]
+    ]
+  },
+  "source_snapshot": "Fetched 2026-09-12 through 2026-09-13 UTC",
+  "reproduction": "API latest aliases may change; retain raw caches for exact source replay.",
+  "parquet": {
+    "version": "2.6",
+    "compression": "BROTLI",
+    "compression_level": 11
+  },
+  "files": [
+    {
+      "file": "vessel_loitering_hours_by_country_year.parquet",
+      "rows": 104386,
+      "columns": 36,
+      "bytes": 4799991,
+      "sha256": "babd53512662338677aa34ac4138c2dfe071059e2ea54d0b95fa2bc0548164f4",
+      "source_csv_sha256": "5931c3eb6c24c12007d654ad5337f202c155ef06ae08d88946c7372e5486222e"
+    },
+    {
+      "file": "vessel_loitering_hours_by_country_all_years.parquet",
+      "rows": 62057,
+      "columns": 45,
+      "bytes": 4245873,
+      "sha256": "09329b319cf270d4e8224eb640017419998981311a0903d69fe0fb64a3fa2d6a",
+      "source_csv_sha256": "1edfb0f36585da4a58f2cbdc98970a7297974637fbc72a29538848a770ea2efa"
+    }
+  ]
+}
